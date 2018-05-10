@@ -3,7 +3,8 @@
 
 def createTournament(number):
     original_number = number
-    number += 1    
+    if original_number%2 == 1:
+        number += 1    
     totalRounds = (number-1)*2
     mathcesPerRound = int(number/2)
     rounds = [["" for x in range(mathcesPerRound)]for y in range(totalRounds)]  
@@ -17,8 +18,9 @@ def createTournament(number):
             
             if match == 0:
                 away = number - 1 
-            if home > original_number-1 or away > original_number-1:
-                continue           
+            if original_number%2 == 1:
+                if home > original_number-1 or away > original_number-1:
+                    continue           
             if session < totalRounds/2:
                 if session == 0:
                     rounds[session][match] = homeAndAway(home, away, lastRound)
